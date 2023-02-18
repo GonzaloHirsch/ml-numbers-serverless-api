@@ -1,0 +1,17 @@
+{
+  "name": "ml-model",
+  "version": "1.0.0",
+  "description": "Machine Learning model that identifies hand-written digits.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "train": "node main.js",
+    "deploy": "source ../.env.production && aws s3 cp exports/latest s3://$MODEL_BUCKET_NAME --recursive"
+  },
+  "author": "Gonzalo Hirsch",
+  "license": "MIT",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.2.0",
+    "node-fetch": "^3.3.0"
+  }
+}

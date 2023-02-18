@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^4.0.2"
+  },
+  "scripts": {
+    "test": "NODE_ENV=development serverless invoke local --function getNumberPrediction --path test.json",
+    "deploy": "NODE_ENV=production serverless deploy"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.2.0"
+  }
+}

@@ -1,0 +1,92 @@
+{
+    "epochs": 20,
+    "batchSize": 128,
+    "validationSplit": 0.15,
+    "savePath": "exports/cpu-v2",
+    "layers": [
+        {
+            "type": "conv2d",
+            "parameters": {
+                "inputShape": [
+                    28,
+                    28,
+                    1
+                ],
+                "filters": 32,
+                "kernelSize": 3,
+                "activation": "relu"
+            }
+        },
+        {
+            "type": "conv2d",
+            "parameters": {
+                "filters": 32,
+                "kernelSize": 3,
+                "activation": "relu"
+            }
+        },
+        {
+            "type": "maxPooling2d",
+            "parameters": {
+                "poolSize": [
+                    2,
+                    2
+                ]
+            }
+        },
+        {
+            "type": "conv2d",
+            "parameters": {
+                "filters": 64,
+                "kernelSize": 3,
+                "activation": "relu"
+            }
+        },
+        {
+            "type": "conv2d",
+            "parameters": {
+                "filters": 64,
+                "kernelSize": 3,
+                "activation": "relu"
+            }
+        },
+        {
+            "type": "maxPooling2d",
+            "parameters": {
+                "poolSize": [
+                    2,
+                    2
+                ]
+            }
+        },
+        {
+            "type": "flatten"
+        },
+        {
+            "type": "dropout",
+            "parameters": {
+                "rate": 0.25
+            }
+        },
+        {
+            "type": "dense",
+            "parameters": {
+                "units": 512,
+                "activation": "relu"
+            }
+        },
+        {
+            "type": "dropout",
+            "parameters": {
+                "rate": 0.5
+            }
+        },
+        {
+            "type": "dense",
+            "parameters": {
+                "units": 10,
+                "activation": "softmax"
+            }
+        }
+    ]
+}
