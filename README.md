@@ -11,7 +11,7 @@ MODEL_URL=URL OF THE ML MODEL, CAN BE LOCAL OR REMOTE.
 ```
 
 Note that `MODEL_URL` can be local or remote. Examples of both:
-- Local --> `file://ml-model/exports/latest/model.json`, meant for development, used in the `.env.development` file.
+- Local --> `http://localhost:3000/latest/model.json`, meant for development, used in the `.env.development` file. Should be a local server that serves the contents.
 - Remote --> `https://BUCKET_NAME.s3.amazonaws.com/model.json`, meant for production, used in the `.env.production` file.
 
 ## ML Model

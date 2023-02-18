@@ -6,7 +6,17 @@ package:
   patterns:
     - '!ml-model/**'
     - '!LICENSE'
+    - '!README.md'
     - '!test.json'
+    - '!tf.config.json'
+    - '!webpack.config.js'
+    - '!node_modules/**/README.md'
+    - '!node_modules/**/LICENSE'
+    - '!node_modules/**/**.map'
+    - '!node_modules/**/**.html'
+    - '!node_modules/**/**.ts'
+    - '!.env**'
+    - '!custom_tfjs/**'
 
 plugins:
   - serverless-dotenv-plugin
@@ -19,8 +29,8 @@ provider:
   stage: 'prod'
   # Don't change
   region: us-east-1
-  memorySize: 512 # optional, in MB, default is 1024
-  timeout: 30 # optional, in seconds, default is 6
+  memorySize: 256 # optional, in MB, default is 1024
+  timeout: 22 # optional, in seconds, default is 6
   httpApi:
     cors:
       allowedOrigins: 

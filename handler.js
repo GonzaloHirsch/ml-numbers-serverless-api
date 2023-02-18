@@ -1,7 +1,4 @@
-const tf = require('@tensorflow/tfjs-node');
-
-const MODEL_URL = process.env.MODEL_URL;
-const EXPECTED_LENGTH = 28*28;
+const tf = require('@tensorflow/tfjs');
 
 // Store the TF model outside the function so it might be shared between instances
 let model;
@@ -18,15 +15,17 @@ exports.handler = async (event, _) => {
     switch (`${event.httpMethod} ${event.resource}`) {
       case "POST /predict":
         // Check we have the data in the data property
-        if (!event.body || !event.body.data || !Array.isArray(event.body.data) || event.body.data.length !== EXPECTED_LENGTH) throw new Error('Error/missing data parameter.');
+        if (!event.body) throw new Error('Error/missing data parameter.');
+        const bodyIn = JSON.parse(event.body);
+        if (!Array.isArray(bodyIn.data) || bodyIn.data.length !== 784) throw new Error('Error/missing data parameter.');
 
         // Create the model if not present
-        if (!model) model = await tf.loadLayersModel(MODEL_URL);
-      
+        if (!model) model = await tf.loadLayersModel(process.env.MODEL_URL);
+
         // Populating the template
-        body = {
-          result: model.predict(tf.tensor(event.body.data, [1,28,28,1])).dataSync()
-        };
+        body = JSON.stringify({
+          result: model.predict(tf.tensor(bodyIn.data, [1, 28, 28, 1])).dataSync()
+        });
         break;
       default:
         throw new Error(`Unsupported route: "${event.routeKey}".`);

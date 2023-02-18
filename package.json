@@ -7,6 +7,6 @@
     "deploy": "NODE_ENV=production serverless deploy"
   },
   "dependencies": {
-    "@tensorflow/tfjs-node": "^4.2.0"
+    "@tensorflow/tfjs": "^4.2.0"
   }
 }
